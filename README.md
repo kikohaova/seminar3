@@ -1,1 +1,3 @@
 # seminar3
+
+## nadpis 
