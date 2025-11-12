@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 from kostka import Kostka
-from lod import Lod
+from lod import Lod, Stihac, Korveta
 
 class Sektor:
     '''
@@ -17,6 +17,8 @@ class Sektor:
     def _vypis_lod(self,lod):
         print(lod)
         print(f'Trup: {lod.graficky_trup(lod._trup, lod._max_trup)}')
+        if isinstance(lod, Stihac):
+            print(f'Energie: {lod.graficka_energie()}')
     
     def _graficky_trup(self):
         pass
@@ -78,8 +80,11 @@ class Sektor:
 
 if __name__ == '__main__':
     k = Kostka(10)
-    lod1 = Lod('Ajax', 100, 20, 18, k)
-    lod2 = Lod('Barracuda', 100, 15, 22, k)
+
+    lod1 = Korveta('Ajax', 100, 20, 18, k)
+    lod2 = Stihac('Barracuda', 100, 15, 22, 1, 60, 40)
+
     orion = Sektor("Orion", lod1, lod2, k)
-    m = Sektor("Orion", lod1, lod2, k)
+    m = Sektor("Muchomurka", lod1, lod2, k)
+
     orion.souboj()
